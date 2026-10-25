@@ -6,7 +6,7 @@ The model describes wild-type and mutant bacteria undergoing advection, diffusio
 
 ## 1. Model
 
-We consider a one-dimensional domain of length \(L\), discretized into \(K+1\) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
+We consider a one-dimensional domain of length \($L$\), discretized into \(K+1\) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
 
 Bacteria undergo three processes:
 
