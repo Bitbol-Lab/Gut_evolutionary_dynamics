@@ -44,7 +44,7 @@ The resulting configuration is saved in `Data_init/` and used to initialize subs
 
 ### `main_phi_moy.c`
 
-Estimates the averaged mutant fixation probability \(\left< \phi\right> \).
+Estimates the averaged mutant fixation probability \(\langle\phi\rangle\).
 
 For each realization, the wild-type population is evolved, and a single mutant is introduced by converting one newly produced wild-type offspring into a mutant. If multiple replication events occur during the same time step, one offspring is selected uniformly among them.
 
