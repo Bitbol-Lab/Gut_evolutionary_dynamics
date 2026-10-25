@@ -6,23 +6,23 @@ The model describes wild-type and mutant bacteria undergoing advection, diffusio
 
 ## 1. Model
 
-We consider a one-dimensional domain of length \($L$\), discretized into \(K+1\) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
+We consider a one-dimensional domain of length \($L$\), discretized into intervals of size \($\Delta x=L/K$\), corresponding to \($K+1$\) lattice sites.
 
 Bacteria undergo three processes:
 
-- **Transport:** advection with velocity \(v_0\) and diffusion with coefficient \(D_0\).
+- **Transport:** advection with velocity \($v_0$\) and diffusion with coefficient \($D_0$\).
 - **Replication:** nutrient-dependent bacterial division (Michaelis–Menten).
 - **Nutrient consumption:** each bacterial division consumes a fixed amount of nutrients.
 
-where \(F\) is the local nutrient concentration, \(r_i\) is the maximum replication rate, and \(k_{\mathrm{rep}}\) is the half-saturation constant.
+where \($F$\) is the local nutrient concentration, \($r_i$\) is the maximum replication rate, and \($k_{\mathrm{rep}}$\) is the half-saturation constant.
 
-The wild-type and mutant populations have maximum replication rates \(r_{\mathrm{wild}}\) and \(r_{\mathrm{mutant}}\), respectively.
+The wild-type and mutant populations have maximum replication rates \($r_{w}$\) and \($r_{m}$\), respectively.
 
-The system has an upstream boundary at \(x=0\) and a downstream outlet at \(x=L\). Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary.
+The system has an upstream boundary at \($x=0$\) and a downstream outlet at \($x=L$\). Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary.
 
 ## 2. Numerical methods
 
-Space and time are discretized using steps \(\Delta x\) and \(\Delta t\).
+Space and time are discretized using steps \($\Delta x$\) and \($\Delta t$\).
 
 Bacterial transport and replication are simulated stochastically. At each time step, bacteria are transported according to diffusion and advection probabilities, followed by replication events sampled from binomial distributions.
 
@@ -44,7 +44,7 @@ The resulting configuration is saved in `Data_init/` and used to initialize subs
 
 ### `main_phi_moy.c`
 
-Estimates the averaged mutant fixation probability \(\langle\phi\rangle\).
+Estimates the averaged mutant fixation probability \($\langle\phi\rangle$\).
 
 For each realization, the wild-type population is evolved, and a single mutant is introduced by converting one newly produced wild-type offspring into a mutant. If multiple replication events occur during the same time step, one offspring is selected uniformly among them.
 
@@ -52,7 +52,7 @@ The wild-type and mutant populations are then evolved until one population disap
 
 ### `main_phi_x.c`
 
-Estimates the fixation probability \(\phi(x)\) of a single mutant introduced at a prescribed spatial position.
+Estimates the fixation probability \($\phi(x)$\) of a single mutant introduced at a prescribed spatial position $x$.
 
 A mutant is added at lattice site `x_init`, and both populations are evolved until the mutant becomes extinct, the wild-type population disappears, or both populations are washed out.
 
