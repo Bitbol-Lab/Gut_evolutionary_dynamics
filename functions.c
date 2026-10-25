@@ -16,7 +16,7 @@ void replace_char(char *str, char find, char replace)
 double proba_repr(double r_rate, double food, const SimParams *params) 
 {
     /* Compute the Michaelis-Menten replication probability over one time step.*/
-     if (food < 0) 
+     if (food <= 0) 
     {
         return 0.0; 
     }
@@ -292,9 +292,9 @@ double generate_c_wild_food(double *c_wild_array, double *food_array, const SimP
         food_array[i] = params->F_in* (1- i *1./ params->n_dx) ;
     }
 
-    double max_abs_change =  1 +params->conv_threshold;
+    double total_abs_change =  1 +params->conv_threshold;
 
-    while (max_abs_change > params->conv_threshold)
+    while (total_abs_change > params->conv_threshold)
     {   
         for (int k = 1 ; k < params->n_dx; k++)
         {
@@ -307,11 +307,11 @@ double generate_c_wild_food(double *c_wild_array, double *food_array, const SimP
         c_wild_array_next[params->n_dx] = c_wild_array[params->n_dx] + 2 * diffusion_rate* (c_wild_array[params->n_dx-1] - c_wild_array[params->n_dx]) + params->r_wild* params->dt* food_array[params->n_dx]* c_wild_array[params->n_dx] / (params->k_rep +food_array[params->n_dx]);
         food_array_next[params->n_dx] = food_array[params->n_dx] + 2 * diffusion_rate* (food_array[params->n_dx-1] - food_array[params->n_dx]) - params->r_wild* params->dt* 1.0/params->alpha * food_array[params->n_dx]* c_wild_array[params->n_dx] / (params->k_rep +food_array[params->n_dx]);
         
-        max_abs_change = 0;
+        total_abs_change = 0;
         for (int i = 0; i <= params->n_dx; i++) 
         {
-            max_abs_change += fabs(c_wild_array_next[i] - c_wild_array[i]);
-            max_abs_change += fabs(food_array_next[i] - food_array[i]);
+            total_abs_change += fabs(c_wild_array_next[i] - c_wild_array[i]);
+            total_abs_change += fabs(food_array_next[i] - food_array[i]);
         }   
         
         for (int i = 0; i<= params->n_dx; i++)
@@ -406,7 +406,7 @@ void main_func_init(const char *name_file1, const char *name_file2, const SimPar
 
     // Evolve the stochastic population to relax toward stationarity.
     long int t = 0;
-    while (t <= params->t_init)
+    while (t < params->t_init)
     {
         update_transport_wild_only(&n_wild, wild_array, wild_array_next, params, r);
         update_replication_wild_only(&n_wild, wild_array, food_array, params, r);
@@ -472,7 +472,7 @@ void extract_data(const char *name_file, int *n_wild_init, int *wild_array_init,
     if (file == NULL)
     {
         printf("Error opening file.\n");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 
     char buffer[256];
@@ -606,7 +606,7 @@ void main_func_phi_moy(const char *name_file, const SimParams *params, gsl_rng *
     int n_wash_out= 0;
     double n_active = 0;
     double mean_n_wild_init= 0.;
-    int t, t_simu;
+    int t;
 
     
     // Sample successive wild-type configurations and perform mutant-invasion trials.
@@ -647,15 +647,12 @@ void main_func_phi_moy(const char *name_file, const SimParams *params, gsl_rng *
 
         mean_n_wild_init+= n_wild;
 
-        t_simu = 0;
-
         // Evolve both populations until one lineage disappears.
         while (n_wild> 0 && n_mutant> 0)
         {
             update_transport_wild_mutant(&n_wild, wild_array, wild_array_next, &n_mutant, mutant_array, mutant_array_next, params, r);
             update_replication_wild_mutant(&n_wild, wild_array, &n_mutant, mutant_array, food_array, food_array_next, params, r);
             func_food_transport(food_array, food_array_next, params);
-            t_simu++;  
         }
 
         // Classify the outcome: mutant extinction, fixation, or complete washout.
@@ -774,7 +771,7 @@ void main_func_phi_x(const char *nom_fichier, const SimParams *params, gsl_rng *
     int n_wash_out= 0;
     double n_active = 0;
     double mean_n_wild_init= 0.;
-    int t, t_simu;
+    int t;
 
     
     // Sample n_simu successive wild-type configurations and perform  wild-type / mutant competition.
@@ -809,16 +806,27 @@ void main_func_phi_x(const char *nom_fichier, const SimParams *params, gsl_rng *
 
         mean_n_wild_init+= n_wild;       
 
-        t_simu = 0;
-
         // Evolve both wild type and mutant populations until one lineage disappears.
         while (n_wild> 0 && n_mutant> 0)
         {
             update_transport_wild_mutant(&n_wild, wild_array, wild_array_next, &n_mutant, mutant_array, mutant_array_next, params, r);
             update_replication_wild_mutant(&n_wild, wild_array, &n_mutant, mutant_array, food_array, food_array_next, params, r);
             func_food_transport(food_array, food_array_next, params);
-            t_simu++;  
         }    
+        
+        // Classify the outcome: mutant extinction, fixation, or complete washout.
+        if (n_wild> 0 && n_mutant== 0)
+        {
+            n_extinction++; 
+        }
+        else if (n_wild== 0 && n_mutant> 0)
+        {
+            n_fixation++; 
+        }
+        else if (n_wild== 0 && n_mutant== 0)
+        {
+            n_wash_out++; 
+        }   
     }
 
     // Average population statistics over all simulations.

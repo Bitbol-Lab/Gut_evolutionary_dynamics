@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
         params.p_array_max[2] = params.p_right_max;
 
         if (params.p_array_max[0] < 0.0) {
-            fprintf(stderr, "WARNING: p_stay = %f < 0.0, this may cause issues\n", params.p_array[0]);
+            fprintf(stderr, "WARNING: p_stay = %f < 0.0, this may cause issues\n", params.p_array_max[0]);
         }
 
         // Initialize and seed the GSL random number generator.
