@@ -14,8 +14,6 @@ Bacteria undergo three processes:
 - **Replication:** nutrient-dependent bacterial division (Michaelis–Menten).
 - **Nutrient consumption:** each bacterial division consumes a fixed amount of nutrients.
 
-where \($F$\) is the local nutrient concentration, \($r_i$\) is the maximum replication rate, and \($k_{\mathrm{rep}}$\) is the half-saturation constant.
-
 The wild-type and mutant populations have maximum replication rates \($r_{w}$\) and \($r_{m}$\), respectively.
 
 The system has an upstream boundary at \($x=0$\) and a downstream outlet at \($x=L$\). Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary.
