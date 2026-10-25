@@ -150,8 +150,9 @@ The fixation files contain the number of realizations leading to:
 
 The fixation probability is estimated as
 
-
-$\hat{\phi}=\frac{N_{\mathrm{fixation}}}{N_{\mathrm{simu}}}$.
+\begin{equation}
+\hat{\phi}=\frac{N_{\mathrm{fixation}}}{N_{\mathrm{simu}}}.
+\end{equation}
 
 The output also includes the mean wild-type population size and the active population size.
 
