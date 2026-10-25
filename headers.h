@@ -17,8 +17,8 @@ typedef struct
     // Simulation parameters
     double dt;           // Time step
     double dx;           // Spatial step
-    long int t_init;     // Number of time steps for initialization
-    int t_inter;     // Number of time steps for initialization
+    long int t_init;     // Number of time steps for initialization 
+    int t_inter;     // Number of time steps for initialization between successive stochastic simulation
     int n_dx;           // Maximum spatial position index
     double D_0;          // Diffusion coefficient
     double v_0;          // Drift velocity
