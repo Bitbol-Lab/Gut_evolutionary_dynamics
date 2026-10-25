@@ -27,7 +27,7 @@ typedef struct
     double F_in;         // Food influx
     double k_rep;        // Monod constant
     double alpha;        // Food consumption coefficient
-    double conv_threshold; // Convergence threshold
+    double conv_threshold; // Convergence threshold for deterministic initialization
     int x_init; 
     int n_simu; 
     int simu_id;
