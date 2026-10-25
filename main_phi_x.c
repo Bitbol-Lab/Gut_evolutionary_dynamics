@@ -35,8 +35,6 @@ int main(int argc, char *argv[])
         params.simu_id    = atoi(argv[16]);
 
         // Compute transport probabilities for each time step.
-        // params.dt = 0.1* fmin(pow(params.dx,2)/(2*params.D_0), fmin(params.dx/ params.v_0, 1.0/params.r_wild));
-
         params.p_diff = params.D_0 / (params.dx * params.dx) * params.dt;
         params.p_drift = params.v_0 / params.dx * params.dt;
 
