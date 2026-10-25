@@ -126,7 +126,7 @@ The fixation simulations require a previously generated initial profile with mat
 | `r_wild` | Maximum wild-type replication rate |
 | `r_mutant` | Maximum mutant replication rate |
 | `F_in` | Inlet nutrient concentration parameter |
-| `k_rep` | Michaelis–Menten half-saturation constant |
+| `k_rep` | Monod constant |
 | `alpha` | Inverse nutrient consumption per bacterial division |
 | `conv_threshold` | Convergence threshold for deterministic initialization |
 | `x_init` | Initial mutant lattice index |
@@ -150,9 +150,9 @@ The fixation files contain the number of realizations leading to:
 
 The fixation probability is estimated as
 
-\begin{equation}
-\hat{\phi}=\frac{N_{\mathrm{fixation}}}{N_{\mathrm{simu}}}.
-\end{equation}
+$$
+\hat{\phi} = \frac{N_{\mathrm{fixation}}}{N_{\mathrm{simu}}}.
+$$
 
 The output also includes the mean wild-type population size and the active population size.
 
