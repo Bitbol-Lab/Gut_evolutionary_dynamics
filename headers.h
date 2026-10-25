@@ -28,9 +28,9 @@ typedef struct
     double k_rep;        // Monod constant
     double alpha;        // Food consumption coefficient
     double conv_threshold; // Convergence threshold for deterministic initialization
-    int x_init; 
-    int n_simu; 
-    int simu_id;
+    int x_init; // mutant initial position index (used in main_phi_moy.c)
+    int n_simu; // number of stochastic simulations.
+    int simu_id; // id output file
     
     // Derived parameters (computed from above)
     double p_diff;
