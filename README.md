@@ -40,11 +40,11 @@ Generates the initial wild-type population and nutrient profile.
 
 The program first computes deterministic steady-state profiles, samples a discrete bacterial population from the resulting distribution, and evolves this population for `t_init` time steps.
 
-The resulting configuration is saved in `Data_init/` and used to initialize subsequent fixation simulations.
+The resulting array is saved in `Data_init/` and used to initialize subsequent fixation simulations.
 
 ### `main_phi_moy.c`
 
-Estimates the averaged mutant fixation probability \($\left<\phi\right>$\).
+Estimates the averaged mutant fixation probability $\left<\phi\right>$.
 
 For each realization, the wild-type population is evolved, and a single mutant is introduced by converting one newly produced wild-type offspring into a mutant. If multiple replication events occur during the same time step, one offspring is selected uniformly among them.
 
@@ -56,7 +56,7 @@ Estimates the fixation probability $\phi(x)$ of a single mutant introduced at a 
 
 A mutant is added at lattice site `x_init`, and both populations are evolved until the mutant becomes extinct, the wild-type population disappears, or both populations are washed out.
 
-Successive realizations are separated by `t_inter` time steps of wild-type evolution to sample different configurations of the resident population.
+Successive realizations are separated by `t_inter` time steps of wild-type evolution to sample different profiles of the resident population.
 
 ## 4. Repository structure
 
@@ -68,7 +68,7 @@ Successive realizations are separated by `t_inter` time steps of wild-type evolu
 ├── main_phi_moy.c     # Averaged Fixation probability 
 ├── main_phi_x.c       # Fixation probability at a prescribed position
 ├── example_simu.sh    # Example simulation script
-├── Data_init/         # Initial bacterial and nutrient configurations
+├── Data_init/         # Initial bacterial and nutrient profiles
 └── Data_fixation/     # Fixation simulation results
 ```
 
@@ -110,7 +110,7 @@ The script runs the three programs sequentially:
 2. Estimate the averaged fixation probability.
 3. Estimate the fixation probability for a mutant introduced at a prescribed position.
 
-The fixation simulations require a previously generated initial configuration with matching physical and numerical parameters.
+The fixation simulations require a previously generated initial profile with matching physical and numerical parameters.
 
 ### Simulation parameters
 
