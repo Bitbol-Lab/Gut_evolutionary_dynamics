@@ -6,19 +6,13 @@ The model describes wild-type and mutant bacteria undergoing advection, diffusio
 
 ## 1. Model
 
-We consider a one-dimensional domain of length \(L\), discretized into \(K+& \) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
+We consider a one-dimensional domain of length \(L\), discretized into \(K+1 \) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
 
 Bacteria undergo three processes:
 
 - **Transport:** advection with velocity \(v_0\) and diffusion with coefficient \(D_0\).
-- **Replication:** nutrient-dependent bacterial division following Michaelis–Menten kinetics.
+- **Replication:** nutrient-dependent bacterial division (Michaelis–Menten).
 - **Nutrient consumption:** each bacterial division consumes a fixed amount of nutrients.
-
-The replication rate of a bacterium of type \(i\) is
-
-\[
-r_i(F)=r_i\frac{F}{k_{\mathrm{rep}}+F},
-\]
 
 where \(F\) is the local nutrient concentration, \(r_i\) is the maximum replication rate, and \(k_{\mathrm{rep}}\) is the half-saturation constant.
 
