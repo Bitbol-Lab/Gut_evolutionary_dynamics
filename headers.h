@@ -19,15 +19,15 @@ typedef struct
     double dx;           // Spatial step
     long int t_init;     // Number of time steps for initialization
     int t_inter;     // Number of time steps for initialization
-    int n_dx;           // Maximum spatial position
+    int n_dx;           // Maximum spatial position index
     double D_0;          // Diffusion coefficient
     double v_0;          // Drift velocity
     double r_wild;       // Growth rate wild-type
     double r_mutant;     // Growth rate mutant
     double F_in;         // Food influx
-    double k_rep;        // Half-saturation constant
+    double k_rep;        // Monod constant
     double alpha;        // Food consumption coefficient
-    double conv_threshold;           // init cell bacteria quantity
+    double conv_threshold; // Convergence threshold
     int x_init; 
     int n_simu; 
     int simu_id;
