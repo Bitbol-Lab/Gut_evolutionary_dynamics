@@ -6,7 +6,7 @@ The model describes wild-type and mutant bacteria undergoing advection, diffusio
 
 ## 1. Model
 
-We consider a one-dimensional domain of length \(L\), discretized into \(K+1 \) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
+We consider a one-dimensional domain of length \(L\), discretized into \(K+1\) spatial intervals of size \(\Delta x=L/K\), corresponding to \(K+1\) lattice sites.
 
 Bacteria undergo three processes:
 
@@ -44,7 +44,7 @@ The resulting configuration is saved in `Data_init/` and used to initialize subs
 
 ### `main_phi_moy.c`
 
-Estimates the mutant fixation probability averaged over spontaneous mutant birth events.
+Estimates the averaged mutant fixation probability \(\left< \phi\right> \).
 
 For each realization, the wild-type population is evolved, and a single mutant is introduced by converting one newly produced wild-type offspring into a mutant. If multiple replication events occur during the same time step, one offspring is selected uniformly among them.
 
