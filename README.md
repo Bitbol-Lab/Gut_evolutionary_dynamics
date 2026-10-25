@@ -11,7 +11,7 @@ We consider a one-dimensional domain of length \($L$\), discretized into interva
 Bacteria undergo three processes:
 
 - **Transport:** advection with velocity \($v_0$\) and diffusion with coefficient \($D_0$\).
-- **Replication:** nutrient-dependent bacterial division (Michaelis–Menten).
+- **Replication:** nutrient-dependent bacterial division (Michaelis–Menten type with Monod constant \($k\)$).
 - **Nutrient consumption:** each bacterial division consumes a fixed amount of nutrients.
 
 The wild-type and mutant populations have maximum replication rates \($r_{w}$\) and \($r_{m}$\), respectively.
