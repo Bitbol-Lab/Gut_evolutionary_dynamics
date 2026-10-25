@@ -52,7 +52,7 @@ The wild-type and mutant populations are then evolved until one population disap
 
 ### `main_phi_x.c`
 
-Estimates the fixation probability \($\phi(x)$\) of a single mutant introduced at a prescribed spatial position $x$.
+Estimates the fixation probability $\phi(x)$ of a single mutant introduced at a prescribed spatial position $x$.
 
 A mutant is added at lattice site `x_init`, and both populations are evolved until the mutant becomes extinct, the wild-type population disappears, or both populations are washed out.
 
@@ -150,9 +150,8 @@ The fixation files contain the number of realizations leading to:
 
 The fixation probability is estimated as
 
-\[
-\hat{\phi}=\frac{N_{\mathrm{fixation}}}{N_{\mathrm{simu}}}.
-\]
+
+$\hat{\phi}=\frac{N_{\mathrm{fixation}}}{N_{\mathrm{simu}}}$.
 
 The output also includes the mean wild-type population size and the active population size.
 
