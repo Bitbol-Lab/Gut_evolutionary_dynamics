@@ -44,7 +44,7 @@ The resulting configuration is saved in `Data_init/` and used to initialize subs
 
 ### `main_phi_moy.c`
 
-Estimates the averaged mutant fixation probability \($\langle\phi\rangle$\).
+Estimates the averaged mutant fixation probability \($\left<\phi\right>$\).
 
 For each realization, the wild-type population is evolved, and a single mutant is introduced by converting one newly produced wild-type offspring into a mutant. If multiple replication events occur during the same time step, one offspring is selected uniformly among them.
 
@@ -65,7 +65,7 @@ Successive realizations are separated by `t_inter` time steps of wild-type evolu
 ├── headers.h          # Simulation parameters and function declarations
 ├── functions.c        # Numerical methods and simulation routines
 ├── main_init.c        # Wild-type population initialization
-├── main_phi_moy.c     # Fixation probability averaged over mutant births
+├── main_phi_moy.c     # Averaged Fixation probability 
 ├── main_phi_x.c       # Fixation probability at a prescribed position
 ├── example_simu.sh    # Example simulation script
 ├── Data_init/         # Initial bacterial and nutrient configurations
@@ -76,21 +76,16 @@ Successive realizations are separated by `t_inter` time steps of wild-type evolu
 
 The code is written in C and requires the GNU Scientific Library (GSL).
 
-On Ubuntu, install the dependencies using:
-
-```bash
-sudo apt update
-sudo apt install gcc libgsl-dev
-```
-
 Compile the three programs:
 
 ```bash
-gcc -O3 main_init.c functions.c -o exe_init.out -lgsl -lgslcblas -lm
 
-gcc -O3 main_phi_moy.c functions.c -o exe_phi_moy.out -lgsl -lgslcblas -lm
+gcc -O2 functions.c main_init.c -o exe_init.out -Wall -Wextra -lm -lgsl -lgslcblas
 
-gcc -O3 main_phi_x.c functions.c -o exe_phi_x.out -lgsl -lgslcblas -lm
+gcc -O2 functions.c main_phi_moy.c -oexe_phi_moy.out -Wall -Wextra -lm -lgsl -lgslcblas
+
+gcc -O2 functions.c main_phi_x.c -o exe_phi_x.out -Wall -Wextra -lm -lgsl -lgslcblas
+
 ```
 
 Create the output directories if they do not already exist:
@@ -112,7 +107,7 @@ bash example_simu.sh
 The script runs the three programs sequentially:
 
 1. Generate an initial stationary wild-type population.
-2. Estimate the fixation probability averaged over mutant birth events.
+2. Estimate the averaged fixation probability.
 3. Estimate the fixation probability for a mutant introduced at a prescribed position.
 
 The fixation simulations require a previously generated initial configuration with matching physical and numerical parameters.
@@ -167,4 +162,4 @@ The simulation framework builds on the one-dimensional gut model studied in:
 
 Labavić, D., Loverdo, C., and Bitbol, A.-F. (2022). *Hydrodynamic flow and concentration gradients in the gut enhance neutral bacterial diversity*. Proceedings of the National Academy of Sciences, **119**(1), e2108671119.
 
-https://doi.org/10.1073/pnas.2108671119
+https://doi.org/10.1073/pnas.2108671119](https://doi.org/10.1073/pnas.2108671119
