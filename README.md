@@ -16,7 +16,7 @@ Bacteria undergo three processes:
 
 The wild-type and mutant populations have maximum replication rates \($r_{w}$\) and \($r_{m}$\), respectively.
 
-The system has an upstream boundary at \($x=0$\) and a downstream outlet at \($x=L$\). Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary.
+The system has an upstream inlet at \($x=0$\) and a downstream outlet at \($x=L$\). Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary. Besides, there is a food inflow $F_{in}$ at the inlet. 
 
 ## 2. Numerical methods
 
