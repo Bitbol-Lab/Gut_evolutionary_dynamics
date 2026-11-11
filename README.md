@@ -6,21 +6,21 @@ The model describes wild-type and mutant bacteria undergoing advection, diffusio
 
 ## 1. Model
 
-We consider a one-dimensional domain of length \($L$\), discretized into intervals of size \($\Delta x=L/K$\), corresponding to \($K+1$\) lattice sites.
+We consider a one-dimensional domain of length $L$, discretized into intervals of size $\Delta x=L/K$, corresponding to $K+1$ lattice sites.
 
 Bacteria undergo three processes:
 
-- **Transport:** advection with velocity \($v_0$\) and diffusion with coefficient \($D_0$\).
-- **Replication:** nutrient-dependent bacterial division (Michaelis–Menten kinetics with Monod constant \($k$\)).
+- **Transport:** advection with velocity $v_0$ and diffusion with coefficient $D_0$.
+- **Replication:** nutrient-dependent bacterial division (Michaelis–Menten kinetics with Monod constant $k$).
 - **Nutrient consumption:** each bacterial division consumes a fixed amount of nutrients.
 
-The wild-type and mutant populations have maximum replication rates \($r_{w}$\) and \($r_{m}$\), respectively.
+The wild-type and mutant populations have maximum replication rates $r_{w}$ and $r_{m}$, respectively.
 
-The system has an upstream inlet at \($x=0$\) and a downstream outlet at \($x=L$\). Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary. Food enters the system through the inlet with an imposed flux $vF_{\mathrm{in}}$, where $F_{\mathrm{in}}$ is the incoming food concentration.
+The system has an upstream inlet at $x=0$ and a downstream outlet at $x=L$. Bacteria cannot leave through the upstream boundary but can be washed out through the downstream boundary. Food enters the system through the inlet with an imposed flux $vF_{\mathrm{in}}$, where $F_{\mathrm{in}}$ is the incoming food concentration.
 
 ## 2. Numerical methods
 
-Space and time are discretized using steps \($\Delta x$\) and \($\Delta t$\).
+Space and time are discretized using steps $\Delta x$ and $\Delta t$.
 
 Bacterial transport and replication are simulated stochastically. At each time step, bacteria are transported according to diffusion and advection probabilities, followed by replication events sampled from binomial distributions.
 
