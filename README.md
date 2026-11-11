@@ -10,7 +10,7 @@ We consider a one-dimensional domain of length \($L$\), discretized into interva
 
 Bacteria undergo three processes:
 
-- **Transport:** advection with velocity \($v_0$\) and diffusion with coefficient \($D_0$\).
+- **Transport:** advection with velocity $v_0$ and diffusion with coefficient \($D_0$\).
 - **Replication:** nutrient-dependent bacterial division (Michaelis–Menten kinetics with Monod constant \($k$\)).
 - **Nutrient consumption:** each bacterial division consumes a fixed amount of nutrients.
 
@@ -154,10 +154,12 @@ $$
 
 The output also includes the mean wild-type population size and the active population size.
 
-## 8. Reference
+## 8. References
 
-The simulation framework builds on the one-dimensional gut model studied in:
+The simulations are described and their results are reported in:
+Arthur Alexandre, Claude Loverdo, Anne-Florence Bitbol, *Hydrodynamic flow in the gut hinders the fixation of beneficial mutants but accelerates their invasion*. BioRxiv 2026
+https://doi.org/10.64898/2026.10.29.762813 
 
-Labavić, D., Loverdo, C., and Bitbol, A.-F. (2022). *Hydrodynamic flow and concentration gradients in the gut enhance neutral bacterial diversity*. Proceedings of the National Academy of Sciences, **119**(1), e2108671119.
-
+The method builds on the framework introduced in the case of neutral mutants in:
+Labavić, D., Loverdo, C., and Bitbol, A.-F. (2022). *Hydrodynamic flow and concentration gradients in the gut enhance neutral bacterial diversity*. Proceedings of the National Academy of Sciences, **119**(1), e2108671119
 https://doi.org/10.1073/pnas.2108671119](https://doi.org/10.1073/pnas.2108671119
