@@ -132,7 +132,7 @@ The fixation simulations require a previously generated initial profile with mat
 | `seed` | Random number generator seed |
 | `simu_id` | Simulation identifier |
 
-The physical length of the domain is \(L=n_{\mathrm{dx}}\Delta x\).
+The physical length of the domain is $L=n_{\mathrm{dx}}\Delta x$.
 
 ## 7. Output
 
